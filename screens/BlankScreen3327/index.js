@@ -17,7 +17,7 @@ const _styles = StyleSheet.create({
     height: "100%"
   },
   DazZoHsP: {
-    width: 107,
-    height: 62
+    width: 192,
+    height: 185
   }
 });
