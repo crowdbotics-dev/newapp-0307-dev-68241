@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  ScrollView,
-  Pressable,
-  TextInput
-} from "react-native";
+import { Text, View, StyleSheet, Image, ScrollView, Pressable, TextInput } from "react-native";
 
 const DiagnoseSymptoms = () => {
   const [feverLevel, setFeverLevel] = useState(0);
@@ -24,8 +16,7 @@ const DiagnoseSymptoms = () => {
   const [isBreathingPain, setIsBreathingPain] = useState(false);
   const [musclePainLevel, setMusclePainLevel] = useState(0);
   const [chestPressureLevel, setChestPressureLevel] = useState(0);
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <ScrollView style={styles.body}>
         <View style={styles.header}>
           <Text style={styles.title}>Step 3</Text>
@@ -36,102 +27,43 @@ const DiagnoseSymptoms = () => {
         </View>
         <View style={styles.symptomItem}>
           <Text style={styles.symptomText}>Fever</Text>
-          <SymptomLevel level={feverLevel} setLevel={(x) => setFeverLevel(x)} />
+          <SymptomLevel level={feverLevel} setLevel={x => setFeverLevel(x)} />
           <View style={styles.halfInputs}>
-            <Input
-              text="Fahrenheit for US Celsius for all other"
-              value={temperature}
-              onChange={(x) => setTemperature(x)}
-              containerStyle={styles.input}
-            />
-            <Input
-              text="How long have you had your fever?"
-              value={feverTime}
-              onChange={(x) => setFeverTime(x)}
-              containerStyle={styles.input}
-            />
+            <Input text="Fahrenheit for US Celsius for all other" value={temperature} onChange={x => setTemperature(x)} containerStyle={styles.input} />
+            <Input text="How long have you had your fever?" value={feverTime} onChange={x => setFeverTime(x)} containerStyle={styles.input} />
           </View>
-          <BinaryQuestion
-            question="Has your temperature increase over this time?"
-            value={isFeverIncreasing}
-            setValue={(x) => setIsFeverIncreasing(x)}
-          />
+          <BinaryQuestion question="Has your temperature increase over this time?" value={isFeverIncreasing} setValue={x => setIsFeverIncreasing(x)} />
         </View>
         <View style={styles.symptomItem}>
           <Text style={styles.symptomText}>Cough</Text>
-          <SymptomLevel level={coughLevel} setLevel={(x) => setCoughLevel(x)} />
+          <SymptomLevel level={coughLevel} setLevel={x => setCoughLevel(x)} />
           <View style={styles.halfInputs}>
-            <Input
-              text="How long have you had your cough?"
-              value={coughTime}
-              onChange={(x) => setCoughTime(x)}
-              containerStyle={styles.input}
-            />
-            <Input
-              text="Is your cough wet or dry?"
-              value={wetCough}
-              onChange={(x) => setWetCough(x)}
-              containerStyle={styles.input}
-            />
+            <Input text="How long have you had your cough?" value={coughTime} onChange={x => setCoughTime(x)} containerStyle={styles.input} />
+            <Input text="Is your cough wet or dry?" value={wetCough} onChange={x => setWetCough(x)} containerStyle={styles.input} />
           </View>
-          <BinaryQuestion
-            question="Are you coughing up mucus?"
-            value={isMucus}
-            setValue={(x) => setIsMucus(x)}
-          />
-          <Input
-            text="What color is mucus?"
-            value={coughColor}
-            onChange={(x) => setCoughColor(x)}
-          />
+          <BinaryQuestion question="Are you coughing up mucus?" value={isMucus} setValue={x => setIsMucus(x)} />
+          <Input text="What color is mucus?" value={coughColor} onChange={x => setCoughColor(x)} />
         </View>
         <View style={styles.symptomItem}>
           <Text style={styles.symptomText}>Shortness of Breath</Text>
-          <SymptomLevel
-            level={shortBreathLevel}
-            setLevel={(x) => setShortBreathLevel(x)}
-          />
-          <Input
-            text="How long have you had shortness of breath?"
-            value={shortBreathTime}
-            onChange={(x) => setShortBreathTime(x)}
-            containerStyle={styles.input}
-          />
-          <BinaryQuestion
-            question="Has your temperature increase over this time?"
-            value={isBreathingPain}
-            setValue={(x) => setIsBreathingPain(x)}
-          />
+          <SymptomLevel level={shortBreathLevel} setLevel={x => setShortBreathLevel(x)} />
+          <Input text="How long have you had shortness of breath?" value={shortBreathTime} onChange={x => setShortBreathTime(x)} containerStyle={styles.input} />
+          <BinaryQuestion question="Has your temperature increase over this time?" value={isBreathingPain} setValue={x => setIsBreathingPain(x)} />
         </View>
         <View style={styles.symptomItem}>
           <Text style={styles.symptomText}>Muscle/Joint Pain</Text>
-          <SymptomLevel
-            level={musclePainLevel}
-            setLevel={(x) => setMusclePainLevel(x)}
-          />
+          <SymptomLevel level={musclePainLevel} setLevel={x => setMusclePainLevel(x)} />
         </View>
         <View style={styles.symptomItem}>
           <Text style={styles.symptomText}>Chest Pressure</Text>
-          <SymptomLevel
-            level={chestPressureLevel}
-            setLevel={(x) => setChestPressureLevel(x)}
-          />
+          <SymptomLevel level={chestPressureLevel} setLevel={x => setChestPressureLevel(x)} />
         </View>
         <Button buttonText="Next" />
       </ScrollView>
-      <Footer
-        titles={["Home", "Diagnose", "Stats", "Map"]}
-        images={[
-          require("./assets/homeIcon.png"),
-          require("./assets/diagnoseIconActive.png"),
-          require("./assets/statsIcon.png"),
-          require("./assets/mapIcon.png")
-        ]}
-        active={1}
-      />
-    </View>
-  );
+      <Footer titles={["Home", "Diagnose", "Stats", "Map"]} images={[require("./assets/homeIcon.png"), require("./assets/diagnoseIconActive.png"), require("./assets/statsIcon.png"), require("./assets/mapIcon.png")]} active={1} />
+    </View>;
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -183,34 +115,18 @@ const styles = StyleSheet.create({
     marginHorizontal: 5
   }
 });
-
 export default DiagnoseSymptoms;
-const Footer = (props) => {
+
+const Footer = props => {
   const generator = props.hideTitle ? props.images : props.titles;
-  return (
-    <View style={footerStyles.footer}>
-      {generator.map((title, index) => (
-        <View style={footerStyles.footerItem} key={index}>
-          <Image
-            style={footerStyles.footerImage}
-            source={props.images[index]}
-          />
-          {props.hideTitle
-            ? null
-            : (
-            <Text
-              style={[
-                footerStyles.footerItemText,
-                index === props.active ? footerStyles.active : null
-              ]}
-            >
+  return <View style={footerStyles.footer}>
+      {generator.map((title, index) => <View style={footerStyles.footerItem} key={index}>
+          <Image style={footerStyles.footerImage} source={props.images[index]} />
+          {props.hideTitle ? null : <Text style={[footerStyles.footerItemText, index === props.active ? footerStyles.active : null]}>
               {title}
-            </Text>
-              )}
-        </View>
-      ))}
-    </View>
-  );
+            </Text>}
+        </View>)}
+    </View>;
 };
 
 const footerStyles = StyleSheet.create({
@@ -246,36 +162,29 @@ const footerStyles = StyleSheet.create({
   }
 });
 
-const SymptomLevel = ({ level, setLevel }) => {
+const SymptomLevel = ({
+  level,
+  setLevel
+}) => {
   let currentLevel = level;
   let width = 20;
   let height = 20;
   let radius = 5;
+
   const giveDimensions = () => {
     return {
-      width: (width += 4),
-      height: (height += 4),
-      borderRadius: (radius += 1)
+      width: width += 4,
+      height: height += 4,
+      borderRadius: radius += 1
     };
   };
-  return (
-    <View style={symptomLevelStyles.container}>
-      {[1, 2, 3, 4, 5].map((item, index) => (
-        <Pressable
-          onPress={() => {
-            setLevel(item);
-            currentLevel = item;
-          }}
-          key={index}
-          style={[
-            symptomLevelStyles.check,
-            giveDimensions(),
-            item === currentLevel ? symptomLevelStyles.fill : null
-          ]}
-        />
-      ))}
-    </View>
-  );
+
+  return <View style={symptomLevelStyles.container}>
+      {[1, 2, 3, 4, 5].map((item, index) => <Pressable onPress={() => {
+      setLevel(item);
+      currentLevel = item;
+    }} key={index} style={[symptomLevelStyles.check, giveDimensions(), item === currentLevel ? symptomLevelStyles.fill : null]} />)}
+    </View>;
 };
 
 const symptomLevelStyles = StyleSheet.create({
@@ -296,50 +205,15 @@ const symptomLevelStyles = StyleSheet.create({
   }
 });
 
-const Input = (props) => {
-  return (
-    <View style={[inputStyles.inputContainer, props.containerStyle]}>
-      {props.text
-        ? (
-        <Text style={inputStyles.inputText}>{props.text}</Text>
-          )
-        : null}
+const Input = props => {
+  return <View style={[inputStyles.inputContainer, props.containerStyle]}>
+      {props.text ? <Text style={inputStyles.inputText}>{props.text}</Text> : null}
 
-      <TextInput
-        style={[
-          inputStyles.input,
-          props.style,
-          props.textArea ? inputStyles.textArea : null
-        ]}
-        placeholder={props.placeholder ? props.placeholder : "Enter"}
-        value={props.value}
-        onChangeText={(text) => props.onChange(text)}
-        placeholderTextColor={
-          props.placeholderTextColor ? props.placeholderTextColor : "#9B9B9B"
-        }
-        editable={props.editable !== false}
-        autoCapitalize="none"
-        autoCorrect={false}
-        multiline={!!props.textArea}
-      />
-      {props.errorText
-        ? (
-        <Text style={inputStyles.error}>{props.errorText}</Text>
-          )
-        : null}
-      {props.icon
-        ? (
-        <Image
-          source={props.icon}
-          style={
-            props.text ? inputStyles.iconWithText : inputStyles.iconWithoutText
-          }
-        />
-          )
-        : null}
+      <TextInput style={[inputStyles.input, props.style, props.textArea ? inputStyles.textArea : null]} placeholder={props.placeholder ? props.placeholder : "Enter"} value={props.value} onChangeText={text => props.onChange(text)} placeholderTextColor={props.placeholderTextColor ? props.placeholderTextColor : "#9B9B9B"} editable={props.editable !== false} autoCapitalize="none" autoCorrect={false} multiline={!!props.textArea} />
+      {props.errorText ? <Text style={inputStyles.error}>{props.errorText}</Text> : null}
+      {props.icon ? <Image source={props.icon} style={props.text ? inputStyles.iconWithText : inputStyles.iconWithoutText} /> : null}
       <View style={styles.children}>{props.children}</View>
-    </View>
-  );
+    </View>;
 };
 
 const inputStyles = StyleSheet.create({
@@ -379,36 +253,20 @@ const inputStyles = StyleSheet.create({
   children: {}
 });
 
-const BinaryQuestion = (props) => {
-  return (
-    <View style={binaryQuestionStyles.questionContainer}>
+const BinaryQuestion = props => {
+  return <View style={binaryQuestionStyles.questionContainer}>
       <Text style={binaryQuestionStyles.questionText}>{props.question}</Text>
       <View style={binaryQuestionStyles.checkboxContainer}>
         <Pressable onPress={() => props.setValue(!props.value)}>
-          <Image
-            source={
-              props.value
-                ? require("./assets/checkboxIconActive.png")
-                : require("./assets/checkboxIcon.png")
-            }
-            style={binaryQuestionStyles.checkbox}
-          />
+          <Image source={props.value ? require("./assets/checkboxIconActive.png") : require("./assets/checkboxIcon.png")} style={binaryQuestionStyles.checkbox} />
         </Pressable>
         <Text style={binaryQuestionStyles.questionText}>Yes</Text>
         <Pressable onPress={() => props.setValue(!props.value)}>
-          <Image
-            source={
-              !props.value
-                ? require("./assets/checkboxIconActive.png")
-                : require("./assets/checkboxIcon.png")
-            }
-            style={binaryQuestionStyles.checkbox}
-          />
+          <Image source={!props.value ? require("./assets/checkboxIconActive.png") : require("./assets/checkboxIcon.png")} style={binaryQuestionStyles.checkbox} />
         </Pressable>
         <Text style={binaryQuestionStyles.questionText}>No</Text>
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const binaryQuestionStyles = StyleSheet.create({
@@ -433,7 +291,7 @@ const binaryQuestionStyles = StyleSheet.create({
   }
 });
 
-const Button = (params) => {
+const Button = params => {
   const backgroundColor = params.color ? params.color : "#000";
   const textColor = params.textColor ? params.textColor : "#fff";
   const btnStyle = {
@@ -444,21 +302,16 @@ const Button = (params) => {
   const btnText = {
     color: params.outline ? "#000" : textColor
   };
-  return (
-    <View style={buttonStyles.btnContainer}>
+  return <View style={buttonStyles.btnContainer}>
       <View style={!params.hideShadow ? buttonStyles.shadowContainer : null}>
-        <Pressable
-          style={[buttonStyles.btn, btnStyle, params.style]}
-          onPress={params.onPress}
-        >
+        <Pressable style={[buttonStyles.btn, btnStyle, params.style]} onPress={params.onPress}>
           <Text style={[buttonStyles.btnText, btnText]}>
             {params.buttonText}
           </Text>
           <View style={styles.childrenContainer}>{params.children}</View>
         </Pressable>
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const buttonStyles = StyleSheet.create({
@@ -481,7 +334,6 @@ const buttonStyles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
-
     flexDirection: "row"
   },
   btnText: {
